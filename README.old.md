@@ -1,2 +1,0 @@
-# boxoffice
-Sample movie boxoffice
