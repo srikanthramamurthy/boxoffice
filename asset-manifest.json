@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/boxoffice/static/css/main.e5ac363d.chunk.css",
-    "main.js": "/boxoffice/static/js/main.8c348e69.chunk.js",
-    "main.js.map": "/boxoffice/static/js/main.8c348e69.chunk.js.map",
+    "main.js": "/boxoffice/static/js/main.edce113c.chunk.js",
+    "main.js.map": "/boxoffice/static/js/main.edce113c.chunk.js.map",
     "runtime-main.js": "/boxoffice/static/js/runtime-main.5b804e23.js",
     "runtime-main.js.map": "/boxoffice/static/js/runtime-main.5b804e23.js.map",
     "static/js/2.ef94add4.chunk.js": "/boxoffice/static/js/2.ef94add4.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.5b804e23.js",
     "static/js/2.ef94add4.chunk.js",
     "static/css/main.e5ac363d.chunk.css",
-    "static/js/main.8c348e69.chunk.js"
+    "static/js/main.edce113c.chunk.js"
   ]
 }
