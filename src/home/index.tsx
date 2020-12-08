@@ -52,8 +52,7 @@ class App extends React.Component {
       this.updateState({ loader: true });
       if (
         localStorage.getItem("movieListFilmWorld") == null ||
-        localStorage.getItem("movieListCinemaWorld") == null ||
-        this.state.movies == undefined
+        localStorage.getItem("movieListCinemaWorld") == null 
       ) {
        const [FWMovies,CWMovies] = await Promise.all([
           BoxOfficeService.getMovies("filmworld"),
@@ -61,9 +60,11 @@ class App extends React.Component {
         ]);
         localStorage.setItem("movieListFilmWorld", JSON.stringify(FWMovies));
         localStorage.setItem("movieListCinemaWorld", JSON.stringify(CWMovies));
-        this.PopulateMovieList();
+        
       }
+      this.PopulateMovieList();
       this.updateState({ loader: false });
+
     } catch (e) {
       this.updateState({ loader: false, error: true });
     }    
