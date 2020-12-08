@@ -5,7 +5,6 @@ import NetworkError from './errors/NetworkError';
 import NotFoundError from './errors/NotFoundError';
 import ForbiddenError from './errors/ForbiddenError';
 import UnprocessableEntity from './errors/UnprocessableEntity';
-import ApiResponse from './types/ApiResponse';
 
 enum HttpMethod {
   Get = 'GET',

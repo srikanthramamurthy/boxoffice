@@ -2,14 +2,12 @@ import React from "react";
 import {
   withStyles,
   WithStyles,
-  Button,
 } from "@material-ui/core";
 import styles from "./MovieSummary.styles";
 import IMovieDetails from "../common/types/IMovieDetails";
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Close from '@material-ui/icons/Close';
@@ -33,12 +31,11 @@ class MovieSummary extends React.Component<IProps> {
     } = this.props;
 
     var movieDetails = filmWorldMovieDetails??cinemaWorldMovieDetails;
-    var isFWCheaper = filmWorldMovieDetails != undefined && cinemaWorldMovieDetails != undefined && filmWorldMovieDetails.Price < cinemaWorldMovieDetails.Price;
 
     return (
       <div className="overlay">
-         {movieDetails == undefined ? <Spinner /> : ""}
-         {movieDetails != undefined ?
+         {movieDetails === undefined ? <Spinner /> : ""}
+         {movieDetails !== undefined ?
         <div className="summaryPanel">
       
         <Card>
@@ -60,11 +57,11 @@ class MovieSummary extends React.Component<IProps> {
       <br/>
       <div className={classes.clear}> </div>
       <div>
-       Film World: <span className={(filmWorldMovieDetails == undefined || filmWorldMovieDetails?.Price == cinemaWorldMovieDetails?.Price)  ? classes.NA :+(filmWorldMovieDetails?.Price ?? 99999) > +(cinemaWorldMovieDetails?.Price ?? '99999') ? classes.expensive : classes.cheaper}>
+       Film World: <span className={(filmWorldMovieDetails === undefined || filmWorldMovieDetails?.Price === cinemaWorldMovieDetails?.Price)  ? classes.NA :+(filmWorldMovieDetails?.Price ?? 99999) > +(cinemaWorldMovieDetails?.Price ?? '99999') ? classes.expensive : classes.cheaper}>
         {filmWorldMovieDetails?.Price != null ? `$ ${filmWorldMovieDetails?.Price}` : "Not Available"}
         </span>
         <br/>
-       Cinema World: <span className={(cinemaWorldMovieDetails == undefined || filmWorldMovieDetails?.Price == cinemaWorldMovieDetails?.Price) ? classes.NA :+(filmWorldMovieDetails?.Price ?? 99999) < +(cinemaWorldMovieDetails?.Price ?? '99999') ? classes.expensive : classes.cheaper}>
+       Cinema World: <span className={(cinemaWorldMovieDetails === undefined || filmWorldMovieDetails?.Price === cinemaWorldMovieDetails?.Price) ? classes.NA :+(filmWorldMovieDetails?.Price ?? 99999) < +(cinemaWorldMovieDetails?.Price ?? '99999') ? classes.expensive : classes.cheaper}>
         {cinemaWorldMovieDetails?.Price != null ? `$ ${cinemaWorldMovieDetails?.Price}` : "Not Available"}
         </span>
         </div>

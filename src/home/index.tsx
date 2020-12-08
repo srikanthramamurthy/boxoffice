@@ -4,7 +4,7 @@ import { IMovie, IMovieAggregate } from "../common/types/IMovie";
 import BoxOfficeService from "../services/BoxOfficeService";
 import IMovieDetails from "../common/types/IMovieDetails";
 import MovieList from "../Movies/MovieList";
-import NavBar from "../navbar/NavBar";
+import NavBar from "../Component/navbar/NavBar";
 import Spinner from "../Component/UI/Spinner";
 import NoData from "../Component/NoData/NoData";
 import { Container } from "@material-ui/core";
@@ -51,8 +51,8 @@ class App extends React.Component {
     try {
       this.updateState({ loader: true });
       if (
-        localStorage.getItem("movieListFilmWorld") == null ||
-        localStorage.getItem("movieListCinemaWorld") == null 
+        localStorage.getItem("movieListFilmWorld") === null ||
+        localStorage.getItem("movieListCinemaWorld") === null 
       ) {
        const [FWMovies,CWMovies] = await Promise.all([
           BoxOfficeService.getMovies("filmworld"),
@@ -63,10 +63,11 @@ class App extends React.Component {
         
       }
       this.PopulateMovieList();
-      this.updateState({ loader: false });
+      this.updateState({ loader: false, error: false });
 
     } catch (e) {
       this.updateState({ loader: false, error: true });
+      //await this.loadMovies();
     }    
   }
 
@@ -90,8 +91,8 @@ class App extends React.Component {
 
   
       this.updateState({
-        filmWorldMovieDetails: filmWorld.status == "fulfilled" ? filmWorld.value : undefined,
-         cinemaWorldMovieDetails: cinemaWorld.status == "fulfilled" ? cinemaWorld.value : undefined        
+        filmWorldMovieDetails: filmWorld.status === "fulfilled" ? filmWorld.value : undefined,
+         cinemaWorldMovieDetails: cinemaWorld.status === "fulfilled" ? cinemaWorld.value : undefined        
        }); 
 
     } catch (e) {
@@ -111,13 +112,15 @@ class App extends React.Component {
 
     let movieList: IMovieAggregate[] = [];
 
-    for (let movie of movieListFilmWorld.Movies) {
+    var movies = movieListFilmWorld.Movies?? movieListCinemaWorld.Movies;
+
+    for (let movie of movies) {
       let movieAggregate: IMovieAggregate = {
         Title: movie.Title,
         Year: movie.Year,
         Poster: movie.Poster,
         FilmWorldID: movie.ID,
-        CinemaWorldID: movieListCinemaWorld.Movies.find((c: IMovie) => c.Title == movie.Title).ID,
+        CinemaWorldID: movieListCinemaWorld.Movies.find((c: IMovie) => c.Title === movie.Title).ID,
         Type: movie.Type,
       };
 

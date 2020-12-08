@@ -7,16 +7,13 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Button,
   Container,
   TableContainer,
   Paper,
 } from "@material-ui/core";
-import { lighten, makeStyles } from "@material-ui/core/styles";
 import styles from "./MovieList.styles";
-import { IMovieAggregate as IMovieAggregate, IMovie } from "../common/types/IMovie";
+import { IMovieAggregate } from "../common/types/IMovie";
 import IMovieDetails from "../common/types/IMovieDetails";
-import MovieListStyles from "./MovieList.styles";
 import MovieSummary from "./MovieSummary";
 
 interface IState {
@@ -62,7 +59,6 @@ class MovieList extends React.Component<IProps, IState> {
             <Table
               className={classes.summaryTable}
               size="small"
-              aria-label="Voyage availability summary"
               stickyHeader
             >
               <TableHead className={classes.head}>
