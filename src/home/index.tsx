@@ -52,7 +52,8 @@ class App extends React.Component {
       this.updateState({ loader: true });
       if (
         localStorage.getItem("movieListFilmWorld") == null ||
-        localStorage.getItem("movieListCinemaWorld") == null
+        localStorage.getItem("movieListCinemaWorld") == null ||
+        this.state.movies == undefined
       ) {
        const [FWMovies,CWMovies] = await Promise.all([
           BoxOfficeService.getMovies("filmworld"),
