@@ -2,6 +2,8 @@
 
 This is a Boxoffice aggregator application, which brings you the latest movies with cheapest prices amongst the listed websites
 
+https://srikanthramamurthy.github.io/boxoffice/
+
 ## Assumptions
 
 ### Movie listing doesn't change during the session
@@ -17,3 +19,11 @@ This is a Boxoffice aggregator application, which brings you the latest movies w
 ### Movie prices vary each time
 
 * it is assumed that movie prices vary each time, hence we are not caching the prices. instead we are showing "Not Available" when a particular site fails to respond.
+
+## Can be improved
+
+* On API failure, recursive call has been made to avoid users to try again
+- alternatively, its a better option to show a message to users to try again instead of recursive tryig, which would have other side effects
+- or add a bit more intelligence around retrying failed api calls
+
+* Due to incompatibity of latest react and enzyme libraries, I have used html comparisions instead of a cleaner checks
