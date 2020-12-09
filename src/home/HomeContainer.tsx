@@ -17,7 +17,7 @@ interface IState {
   error: Boolean | undefined;
 }
 
-class App extends React.Component {
+class HomeContainer extends React.Component {
   readonly state: Readonly<IState> = {
     movies: undefined,
     filmWorldMovieDetails: undefined,
@@ -47,7 +47,7 @@ class App extends React.Component {
     this._isMounted = false;
   }
 
-  async loadMovies() {
+   async loadMovies() {
     try {
       this.updateState({ loader: true });
       if (
@@ -62,12 +62,13 @@ class App extends React.Component {
         localStorage.setItem("movieListCinemaWorld", JSON.stringify(CWMovies));
         
       }
+      
       this.PopulateMovieList();
       this.updateState({ loader: false, error: false });
 
     } catch (e) {
       this.updateState({ loader: false, error: true });
-      //await this.loadMovies();
+      await this.loadMovies();
     }    
   }
 
@@ -170,4 +171,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default HomeContainer;
